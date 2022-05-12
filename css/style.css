@@ -1,0 +1,122 @@
+:root {
+    --my-padding: 0.4rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    .container {
+        color:rgb(0, 12, 245);
+        display: grid; /**loob automaatselt lehele read**/
+        font-size: 2rem;
+        gap: 10px; /**loob ridade vahele vahed**/
+        grid-template-columns: 1fr 1fr 1fr 1fr; /**täpsustab mitu veergu**/
+        grid-template-rows: 1fr 1fr 1fr 1fr; /**täpsustab mitu rida**/
+        grid-template-areas: 
+        "nav nav nav nav"
+        "content1 content2 content3 sidebar"
+        "main main main sidebar"
+        "footer footer footer sidebar"
+        ;
+        height: 100vh; /**võtab kogu veebilehe kõrgusest 100%**/
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    nav {
+        background-color: darkseagreen;
+        grid-area: nav; /**määrab alale nime**/
+        padding: var(--my-padding); /**vaikimisi padding**/
+    }
+
+    .nav-container {
+        display: grid;
+        grid-template-columns: repeat (4, 1fr);
+        grid-template-rows: 1fr;
+    }
+
+
+    .content1 {
+        background-color:rgba(102, 205, 171, 0.562);
+        grid-area: content1;
+        padding: var(--my-padding);
+    }
+
+    .content2 {
+        background-color:paleturquoise;
+        grid-area: content2;
+        padding: var(--my-padding);
+    }
+
+    .content3 {
+        background-color:rgba(85, 107, 47, 0.74);
+        grid-area: content3;
+        padding: var(--my-padding);
+    }
+
+    .sidebar {
+        background-color:rgba(49, 100, 100, 0.699);
+        grid-area: sidebar;
+        padding: var(--my-padding);
+    }
+
+    .main {
+        background-color:rgba(128, 255, 212, 0.548);
+        grid-area: main;
+        padding: var(--my-padding);
+    }
+
+    .footer {
+        background-color:azure;
+        grid-area: footer;
+        padding: var(--my-padding);
+    }
+
+
+    @media (max-width: 1024px) { /**Tablet - kuni läpaka laiuseni**/
+    }
+    .sidebar {
+        display: none;
+    }
+        .container {
+            grid-template-columns: 1fr 1fr; /**iga osa võtab 50% lehekülje laiusest**/
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-areas: 
+            "nav nav"
+            "main main"
+            "content3 content2"
+            "content1 content1"
+            "footer footer"
+            ;
+        }
+
+
+    @media (max-width: 480px) { /**kuni nutitelefoni laiuseni**/
+        .sidebar {
+            display: block;
+        }
+
+        .content3 {
+            display: none;
+        }
+
+        .container {
+            gap: 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(6, 1fr);
+            grid-template-areas: 
+            "nav"
+            "main"
+            "content1"
+            "content2"
+            "sidebar"
+            "footer"
+            ;
+        }
+    }
+
+
+
